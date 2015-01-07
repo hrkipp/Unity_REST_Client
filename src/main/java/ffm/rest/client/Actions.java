@@ -75,27 +75,38 @@ public class Actions {
 		return Arrays.asList(get("/sections/"+section.getId()+"/studentSectionAssociations", StudentSectionAssociation[].class));
 	}
 
+	public List<StudentSchoolAssociation> getStudentSchoolAssociations(Student student){
+		return Arrays.asList(get("/students/" + student.getId() + "/studentSchoolAssociations", StudentSchoolAssociation[].class));
+	}
+
+	public List<StudentSchoolAssociation> getStudentSchoolAssociations(School section){
+		return Arrays.asList(get("/schools/"+section.getId()+"/studentSchoolAssociations", StudentSchoolAssociation[].class));
+	}
 
 
+	public void updateStudent(Student student){
+		post("/students/"+student.getId(), student);
+	}
 
+	public void updateTeacher(Teacher student){
+		post("/teachers/"+student.getId(), student);
+	}
 
+	public void updateSchool(School student){
+		post("/schools/"+student.getId(), student);
+	}
 
+	public void updateSection(Section student){
+		post("/sections/"+student.getId(), student);
+	}
 
+	public void updateStudentSectionAssociation(StudentSectionAssociation student){
+		post("/studentSectionAssociations/"+student.getId(), student);
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	public void updateStudentSchoolAssociation(StudentSchoolAssociation student){
+		post("/studentSchoolAssociations/"+student.getId(), student);
+	}
 
 
 
@@ -114,6 +125,14 @@ public class Actions {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	private void post(String relative, Object object){
+		try {
+			resty.json(root + relative, Resty.content(gson.toJson(object)));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
