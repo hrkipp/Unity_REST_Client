@@ -164,6 +164,34 @@ public class GETTest {
 		}
 	}
 
+	@Test
+	public void getStudentSchoolAssociationTest() throws Throwable {
+
+		List<School> sections = actions.getSchools();
+
+		assert !sections.isEmpty();
+
+		List<StudentSchoolAssociation> associations = actions.getStudentSchoolAssociations(sections.get(0));
+
+		for (StudentSchoolAssociation association : associations) {
+			assert association.getSchoolId().equals(sections.get(0).getId());
+		}
+	}
+
+	@Test
+	public void getStudentSchoolAssociationTest1() throws Throwable {
+
+		List<Student> sections = actions.getStudents();
+
+		assert !sections.isEmpty();
+
+		List<StudentSchoolAssociation> associations = actions.getStudentSchoolAssociations(sections.get(0));
+
+		for (StudentSchoolAssociation association : associations) {
+			assert association.getStudentId().equals(sections.get(0).getId());
+		}
+	}
+
 
 
 }

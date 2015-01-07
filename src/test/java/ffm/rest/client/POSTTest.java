@@ -92,6 +92,31 @@ public class POSTTest {
 	}
 
 	@Test
+	public void updateSectionTest() throws Exception {
+
+		Section student = actions.getSections().get(0);
+
+		String cachedName = student.getName();
+
+		student.setName("Test Section Name");
+
+		actions.updateSection(student);
+
+		Section student1 = actions.getSection(student.getId());
+
+		assert student1.getName().equals("Test Section Name");
+
+		student.setName(cachedName);
+
+		actions.updateSection(student);
+
+		Section student2 = actions.getSection(student.getId());
+
+		assert student2.getName().equals(cachedName);
+
+	}
+
+	@Test
 	public void updateStudentSectionAssociationTest() throws Exception {
 
 		Student student = actions.getStudents().get(0);

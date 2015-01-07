@@ -22,9 +22,6 @@ public class Actions {
 		this.root = rootURL;
 		resty.withHeader("District", "default");
 		resty.withHeader("Authorization", "c86646d6-88e0-11e4-b116-123b93f75cba");
-
-		// Remove this header to actually persist changes
-		resty.withHeader("Testing", "true");
 	}
 
 	public List<Teacher> getTeachers() {
@@ -82,7 +79,6 @@ public class Actions {
 	public List<StudentSchoolAssociation> getStudentSchoolAssociations(School section){
 		return Arrays.asList(get("/schools/"+section.getId()+"/studentSchoolAssociations", StudentSchoolAssociation[].class));
 	}
-
 
 	public void updateStudent(Student student){
 		post("/students/"+student.getId(), student);
