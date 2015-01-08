@@ -5,6 +5,7 @@ public class Teacher {
 	private String id;
 	private String firstname;
 	private String lastname;
+	private School school;
 
 	public String getFirstname() {
 		return firstname;
@@ -29,5 +30,13 @@ public class Teacher {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
 	}
 }

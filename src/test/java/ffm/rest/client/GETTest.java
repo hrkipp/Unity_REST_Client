@@ -13,7 +13,7 @@ public class GETTest {
 	@Before
 	public void setup(){
 		actions = new Actions("http://rest.forefrontmath.com");
-//		actions = new Actions("http://localhost:8080");cd
+//		actions = new Actions("http://localhost:8080");
 	}
 
 	@Test
@@ -41,11 +41,11 @@ public class GETTest {
 
 	@Test
 	public void getTeacherSectionsTest() throws Throwable {
-		List<Teacher> sections = actions.getTeachers();
+		List<Teacher> teachers = actions.getTeachers();
 
-		assert !sections.isEmpty();
+		assert !teachers.isEmpty();
 
-		List<Section> students = actions.getSections(sections.get(0));
+		List<Section> students = actions.getSections(teachers.get(0));
 
 		assert !students.isEmpty();
 

@@ -44,23 +44,23 @@ public class POSTTest {
 	@Test
 	public void updateSchoolTest() throws Exception {
 
-		School student = actions.getSchools().get(0);
+		School school = actions.getSchools().get(0);
 
-		String cachedName = student.getName();
+		String cachedName = school.getName();
 
-		student.setName("Test School Name");
+		school.setName("Test School Name");
 
-		actions.updateSchool(student);
+		actions.updateSchool(school);
 
-		School student1 = actions.getSchool(student.getId());
+		School student1 = actions.getSchool(school.getId());
 
 		assert student1.getName().equals("Test School Name");
 
-		student.setName(cachedName);
+		school.setName(cachedName);
 
-		actions.updateSchool(student);
+		actions.updateSchool(school);
 
-		School student2 = actions.getSchool(student.getId());
+		School student2 = actions.getSchool(school.getId());
 
 		assert student2.getName().equals(cachedName);
 
@@ -69,23 +69,27 @@ public class POSTTest {
 	@Test
 	public void updateTeacherTest() throws Exception {
 
-		Teacher student = actions.getTeachers().get(0);
+		Teacher teacher = actions.getTeachers().get(0);
 
-		String cachedName = student.getFirstname();
+		School school = actions.getSchools().get(0);
 
-		student.setFirstname("Test Teacher Name");
+		teacher.setSchool(school);
 
-		actions.updateTeacher(student);
+		String cachedName = teacher.getFirstname();
 
-		Teacher student1 = actions.getTeacher(student.getId());
+		teacher.setFirstname("Test Teacher Name");
+
+		actions.updateTeacher(teacher);
+
+		Teacher student1 = actions.getTeacher(teacher.getId());
 
 		assert student1.getFirstname().equals("Test Teacher Name");
 
-		student.setFirstname(cachedName);
+		teacher.setFirstname(cachedName);
 
-		actions.updateTeacher(student);
+		actions.updateTeacher(teacher);
 
-		Teacher student2 = actions.getTeacher(student.getId());
+		Teacher student2 = actions.getTeacher(teacher.getId());
 
 		assert student2.getFirstname().equals(cachedName);
 
@@ -177,13 +181,5 @@ public class POSTTest {
 		assert association.getExitWithdrawDate().equals(oldDate);
 
 	}
-
-
-
-
-
-
-
-
 
 }

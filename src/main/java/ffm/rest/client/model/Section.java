@@ -3,6 +3,7 @@ package ffm.rest.client.model;
 
 import ffm.rest.client.enums.SchoolYear;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Section {
@@ -11,7 +12,7 @@ public class Section {
 	private String id;
 	private SchoolYear schoolYear;
 	private String schoolId;
-	private List<Teacher> teachers;
+	private List<Teacher> teachers = new ArrayList<>();
 
 	public String getSchoolId() {
 		return schoolId;
